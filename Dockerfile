@@ -1,6 +1,8 @@
-FROM centos:7.2
+FROM centos:7.2.1511
 
 MAINTAINER "João Antonio Ferreira" <joao.parana@gmail.com>
+
+ENV REFRESHED_AT 2016-06-30
 
 RUN yum -y update && yum clean all
 
