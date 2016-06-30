@@ -7,6 +7,7 @@ ENV REFRESHED_AT 2016-06-30
 RUN yum -y update && yum clean all
 
 # Systemd integration
+#
 # Systemd is included in the centos:7.2 base container, but it is not 
 # active by default. In order to use systemd, I create this Dockerfile 
 
