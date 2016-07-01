@@ -4,7 +4,7 @@ MAINTAINER "João Antonio Ferreira" <joao.parana@gmail.com>
 
 ENV REFRESHED_AT 2016-06-30
 
-RUN yum -y update && yum clean all
+RUN yum -y update && yum -y install openssh-server passwd pwgen && yum clean all
 
 # Systemd integration
 #
@@ -26,5 +26,22 @@ rm -f /lib/systemd/system/anaconda.target.wants/* ;
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-CMD ["/usr/sbin/init"]
+# Setup do SSH Server
+ENV AUTHORIZED_KEYS **None**
+ADD create-ssh-user.sh /create-ssh-user.sh
+ADD set_root_pw.sh /set_root_pw.sh
+
+RUN mkdir /var/run/sshd
+
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' 
+
+RUN chmod 755 /create-ssh-user.sh
+
+EXPOSE 22
+RUN /create-ssh-user.sh
+
+ADD start.sh /start.sh
+RUN chmod 755 /start.sh
+
+ENTRYPOINT ["/start.sh"]
 
