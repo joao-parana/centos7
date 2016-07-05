@@ -4,7 +4,7 @@ MAINTAINER "João Antonio Ferreira" <joao.parana@gmail.com>
 
 ENV REFRESHED_AT 2016-06-30
 
-RUN yum -y update && yum -y install openssh-server passwd pwgen && yum clean all
+RUN yum -y update && yum -y install openssh-server passwd pwgen rsyslog && yum clean all
 
 # Systemd integration
 #
