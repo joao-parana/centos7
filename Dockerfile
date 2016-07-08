@@ -4,6 +4,9 @@ MAINTAINER "João Antonio Ferreira" <joao.parana@gmail.com>
 
 ENV REFRESHED_AT 2016-06-30
 
+WORKDIR /tmp
+# Required for install pwgen - http://www.itzgeek.com/how-tos/linux/centos-how-tos/enable-epel-repository-for-centos-7-rhel-7.html 
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && yum repolist && yum --disablerepo=* --enablerepo=epel list 
 RUN yum -y update && yum -y install openssh-server passwd pwgen rsyslog && yum clean all
 
 # Systemd integration
