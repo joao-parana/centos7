@@ -2,7 +2,7 @@ FROM centos:7.2.1511
 
 MAINTAINER "João Antonio Ferreira" <joao.parana@gmail.com>
 
-ENV REFRESHED_AT 2016-06-30
+ENV REFRESHED_AT 2016-07-08
 
 WORKDIR /tmp
 # Required for install pwgen - http://www.itzgeek.com/how-tos/linux/centos-how-tos/enable-epel-repository-for-centos-7-rhel-7.html 
