@@ -44,7 +44,14 @@ EXPOSE 22
 RUN /create-ssh-user.sh
 
 # Adding Apache web server
-RUN yum -y update && yum -y install httpd && yum clean all
+# RUN yum -y update 
+RUN yum -y install apr
+RUN yum -y install apr-util
+RUN yum -y install centos-logos
+RUN yum -y install httpd-tools
+RUN yum -y install mailcap  
+RUN yum -y install httpd 
+# RUN yum clean all
 # Automated build fail with this command
 # RUN systemctl enable httpd.service
 
