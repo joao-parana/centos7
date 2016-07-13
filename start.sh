@@ -34,14 +34,27 @@ echo "••• `date` - - - - - - Iniciando o SSH Server - - - - - - - - - "
 /usr/sbin/sshd -D &
 echo "••• `date` - - - - - - SSH Server Iniciado  - - - - - - - - - - "
 # 
-# echo "••• `date` - - - - - - Iniciando o Systemd  - - - - - - - - - - "
-# /usr/sbin/init
-# 
+if [ "$1" = 'init' ]; then
+    echo "••• `date` - Iniciando o Systemd"
+#   /usr/sbin/init
+    systemctl start httpd.service
+    /bin/bash
+    exit 0
+fi
+
+echo "••• `date` - - - -  No macOS e no Windows não roda o systemctl   - - - - "
 
 echo "••• `date` - - - - - - ENTRYPOINT com parametro: $1  - - - - - - - - - - "
 if [ "$1" = 'bash' ]; then
+    echo "••• `date` - - - - - - Iniciando o Apache WEB Server - - - - - - - - - "
+    # systemctl start httpd.service
+    /usr/sbin/apachectl
+    curl http://localhost
+    ps -ef 
     echo "••• `date` - Iniciando Bash shell"
     /bin/bash
     exit 0
 fi
+# /sbin/init
+# sleep 200000000
 

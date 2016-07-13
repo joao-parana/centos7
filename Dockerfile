@@ -43,6 +43,10 @@ RUN chmod 755 /create-ssh-user.sh
 EXPOSE 22
 RUN /create-ssh-user.sh
 
+# Adding Apache web server
+RUN yum -y update && yum -y install httpd && yum clean all && systemctl enable httpd.service
+EXPOSE 80
+
 ADD start.sh /start.sh
 RUN chmod 755 /start.sh
 
