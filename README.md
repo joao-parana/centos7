@@ -18,7 +18,7 @@ or
 docker run -i -t --rm -e ROOT_PASSWORD=xyz --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 2222:22 -p 80:80 parana/centos7 bash
 ```
 
-Is not possible run im macOS or Windows 
+Is not possible run Docker in privileged mode sharing /sys/fs/cgroup in macOS or Windows 
 
 For those systems use:
 
@@ -27,6 +27,8 @@ docker run -i -t --rm -e ROOT_PASSWORD=xyz  -p 2222:22 -p 80:80 parana/centos7 b
 ```
 
 Please, view the comments on Dockerfile
+
+To view Default CentOS 7 Apache page use:
 
 ```
 open http://$(docker-ip):80
