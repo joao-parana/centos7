@@ -4,6 +4,12 @@ MAINTAINER "João Antonio Ferreira" <joao.parana@gmail.com>
 
 ENV REFRESHED_AT 2016-07-08
 
+# Adding Apache web server
+# This command cause error on Automated Build -> RUN yum -y update 
+RUN yum -y install apr apr-util centos-logos mailcap httpd-tools httpd && yum clean all
+
+EXPOSE 80
+
 WORKDIR /tmp
 # Required for install pwgen - http://www.itzgeek.com/how-tos/linux/centos-how-tos/enable-epel-repository-for-centos-7-rhel-7.html 
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && yum repolist && yum --disablerepo=* --enablerepo=epel list 
@@ -43,21 +49,7 @@ RUN chmod 755 /create-ssh-user.sh
 EXPOSE 22
 RUN /create-ssh-user.sh
 
-# Adding Apache web server
-# RUN yum -y update 
-RUN yum -y install apr && \
-    yum -y install apr-util && \
-    yum -y install centos-logos
-
-RUN yum -y install mailcap  
-
-RUN yum -y install httpd-tools
-RUN yum -y install httpd 
-RUN yum clean all
-
 # RUN systemctl enable httpd.service
-
-EXPOSE 80
 
 ADD start.sh /start.sh
 RUN chmod 755 /start.sh
