@@ -1,4 +1,5 @@
-FROM centos:7.2.1511
+FROM parana/centos7-aut-build
+# FROM centos:7.2.1511
 
 MAINTAINER "João Antonio Ferreira" <joao.parana@gmail.com>
 
@@ -6,9 +7,9 @@ ENV REFRESHED_AT 2016-07-08
 
 # Adding Apache web server
 # This command cause error on Automated Build -> RUN yum -y update 
-RUN yum -y install apr apr-util centos-logos mailcap httpd-tools httpd && yum clean all
-
-EXPOSE 80
+# RUN yum -y install apr apr-util centos-logos mailcap httpd-tools httpd && yum clean all
+# 
+# EXPOSE 80
 
 WORKDIR /tmp
 # Required for install pwgen - http://www.itzgeek.com/how-tos/linux/centos-how-tos/enable-epel-repository-for-centos-7-rhel-7.html 
