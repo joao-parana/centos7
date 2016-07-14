@@ -13,7 +13,7 @@ EXPOSE 80
 WORKDIR /tmp
 # Required for install pwgen - http://www.itzgeek.com/how-tos/linux/centos-how-tos/enable-epel-repository-for-centos-7-rhel-7.html 
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && yum repolist && yum --disablerepo=* --enablerepo=epel list 
-RUN yum -y install openssh-server passwd pwgen rsyslog && yum clean all
+RUN yum -y install openssh-server passwd pwgen rsyslog git && yum clean all
 
 # Systemd integration
 #
