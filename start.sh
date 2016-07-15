@@ -49,7 +49,8 @@ if [ "$1" = 'bash' ]; then
     echo "••• `date` - - - - - - Iniciando o Apache WEB Server - - - - - - - - - "
     # systemctl start httpd.service
     /usr/sbin/apachectl
-    curl http://localhost
+    echo "••• `date` - - - - - - Testando o conteudo de http://localhost  - - - - - - - - - "
+    curl http://localhost | grep "<p class=\"lead\">" | grep "This page is used"
     ps -ef 
     echo "••• `date` - Iniciando Bash shell"
     /bin/bash
