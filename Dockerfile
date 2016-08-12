@@ -2,7 +2,7 @@ FROM centos:7.2.1511
 
 MAINTAINER "João Antonio Ferreira" <joao.parana@gmail.com>
 
-ENV REFRESHED_AT 2016-07-31
+ENV REFRESHED_AT 2016-08-12
 
 # Adding Apache web server
 # This command cause error on Automated Build -> RUN yum -y update 
@@ -13,7 +13,7 @@ EXPOSE 80
 WORKDIR /tmp
 # Required for install pwgen - http://www.itzgeek.com/how-tos/linux/centos-how-tos/enable-epel-repository-for-centos-7-rhel-7.html 
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && yum repolist && yum --disablerepo=* --enablerepo=epel list 
-RUN yum -y install openssh-server passwd pwgen rsyslog git bzip2 && yum clean all
+RUN yum -y install openssh-server passwd pwgen rsyslog git bzip2 curl tar unzip && yum clean all
 
 # Systemd integration
 #
